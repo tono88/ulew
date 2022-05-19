@@ -78,11 +78,12 @@
 					
 					<t t-foreach="product.item_ids" t-as="o">
                                
-                                
                                 <td>
+                                <ul>
                                     <li><t t-esc="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
-                                </td>
+                                </ul>
+								</td>
                                 
                                 
                     </t>
