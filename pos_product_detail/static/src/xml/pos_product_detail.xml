@@ -73,8 +73,10 @@
                     <t t-if="field_load_check.volume">
                         <tr class="product_info_tr"><td>Volume</td><td><t t-esc="product.volume or '---'"/></td></tr>
                     </t>
+					
+					 <t t-if="field_load_check.item_ids">
 					<tr class="product_info_tr"><td>Tarifas</td>
-					<t t-esc="product.item_ids[1].min_quantity or '---'"/>
+					<t t-esc="product.item_ids[1].price or '---'"/>
 					
 					<t t-foreach="product.item_ids" t-as="o">
                                
@@ -87,6 +89,7 @@
                                 
                                 
                     </t>
+					</t>
 					
 					
 					
