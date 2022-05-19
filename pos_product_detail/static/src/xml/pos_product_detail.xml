@@ -86,7 +86,7 @@
                             </td>
                         </tr>
                     </t>
-					 <t>
+					 
 					<tr class="product_info_tr"><td>Tarifa</td>
 				
                                  <t t-foreach="product.item_ids" t-as="o">
@@ -101,7 +101,7 @@
                                 </t>
                                  <field  name="item_ids"  invisible="1"> </field>
                 
-					 </t>
+					 </tr>
                 </table>
             </div>
             <img class='cross_img_bottom close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
