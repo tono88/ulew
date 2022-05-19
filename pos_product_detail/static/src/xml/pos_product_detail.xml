@@ -73,28 +73,6 @@
                     <t t-if="field_load_check.volume">
                         <tr class="product_info_tr"><td>Volume</td><td><t t-esc="product.volume or '---'"/></td></tr>
                     </t>
-					
-					 <t t-if="field_load_check.item_ids">
-					<tr class="product_info_tr"><td>Tarifas</td>
-					<t t-esc="product.item_ids[1].price or '---'"/>
-					
-					<t t-foreach="product.item_ids" t-as="o">
-                               
-                                <td>
-                                <ul>
-                                    <li><t t-out="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
-                                 
-                                </ul>
-								</td>
-                                
-                                
-                    </t>
-					
-					
-					
-					
-					
-					</tr>
                     <t t-if="field_load_check.to_weight">
                         <tr class="product_info_tr">
                             <td>To Weigh With Scale</td>
