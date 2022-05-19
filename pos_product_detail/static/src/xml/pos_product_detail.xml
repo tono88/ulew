@@ -80,7 +80,7 @@
                                
                                 <td>
                                 <ul>
-                                    <li><t t-esc="o.raw_value.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
+                                    <li><t t-out="o.raw_value.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
                                 </ul>
 								</td>
@@ -88,7 +88,7 @@
                                 
                     </t>
 					
-					<field  name="item_ids"  invisible="1"> </field>
+					
 					
 					
 					
