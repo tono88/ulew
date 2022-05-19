@@ -11,7 +11,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
     var pos_model = require('point_of_sale.models');
     var SuperProductScreen = screens.ProductScreenWidget.prototype;
 
-    pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','pricelist_item_ids']);
+    pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id']);
 
     pos_model.load_models({
         model:  'product.fields',
