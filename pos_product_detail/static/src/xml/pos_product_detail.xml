@@ -86,6 +86,22 @@
                             </td>
                         </tr>
                     </t>
+					
+					
+					<t t-if="field_load_check.item_ids">
+                                 <t t-foreach="product.item_ids" t-as="o">
+                               
+                                
+                                <ul>
+                                    <li><t t-esc="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
+                                 
+                                </ul>
+                                
+                                
+                                </t>
+                                 <field  name="item_ids"  invisible="1"> </field>
+                    </t>
+					
                 </table>
             </div>
             <img class='cross_img_bottom close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
