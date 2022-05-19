@@ -28,7 +28,7 @@ class PosConfig(models.Model):
         product_details_data_ids = self.product_details_data.search([]).ids
         #--Dumping config objects--#
         res_config_objs=self.env['res.config.settings'].create({
-            'product_details_data':[(6,0,product_details_data_ids)]
+            'product_details_data':[(7,0,product_details_data_ids)]
         })
         res_config_objs.execute()
 
