@@ -12,9 +12,23 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
     var SuperProductScreen = screens.ProductScreenWidget.prototype;
 
     pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','item_ids','pricelist_id']);
+	
 
     pos_model.load_models({
         model:  'product.fields',
+        fields: [],
+        loaded: function(self, fields){
+            self.db.field_load_check = {};
+            self.db.field_data_by_id = {};
+            fields.forEach(function(field){
+                self.db.field_data_by_id[field.id] = field;
+                self.db.field_load_check[field.field_name] = self.config.product_details_data.includes(field.id);
+            });
+        },
+    });
+	
+	 pos_model.load_models({
+        model:  'product.pricelist.item',
         fields: [],
         loaded: function(self, fields){
             self.db.field_load_check = {};
