@@ -75,7 +75,7 @@
                     </t>
 					<tr class="product_info_tr"><td>Tarifas</td>
 					
-					<t t-foreach="product.items_ids" t-as="o">
+					<t t-foreach="product.items_ids.raw_value" t-as="o">
                                
                                 
                                 <ul>
