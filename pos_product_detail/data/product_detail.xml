@@ -49,7 +49,6 @@
             <field name="field_name">item_ids</field>
             <field name="field_string">Tarifas</field>
             <field name="field_type">one2many</field>
-			
         </record>
     </data>
 </odoo>
