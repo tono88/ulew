@@ -25,9 +25,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
                 self.db.field_load_check[field.field_name] = self.config.product_details_data.includes(field.id);
             });
         },
-    });
-	
-	 pos_model.load_models({
+    },{
         model:  'product.pricelist.item',
         fields: [],
         loaded: function(self, fields){
@@ -39,6 +37,8 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
             });
         },
     });
+	
+	
 
     screens.ProductScreenWidget.include({
         events : _.extend({}, SuperProductScreen.events, {
