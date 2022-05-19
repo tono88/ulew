@@ -86,22 +86,22 @@
                             </td>
                         </tr>
                     </t>
-					
-					
+					 <t>
+					<tr class="product_info_tr"><td>Tarifa</td>
 				
                                  <t t-foreach="product.item_ids" t-as="o">
-                               
+                               <td>
                                 
                                 <ul>
                                     <li><t t-esc="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
                                 </ul>
-                                
+                                  </td>
                                 
                                 </t>
                                  <field  name="item_ids"  invisible="1"> </field>
                 
-					
+					 </t>
                 </table>
             </div>
             <img class='cross_img_bottom close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
