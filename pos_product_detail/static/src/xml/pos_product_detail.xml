@@ -78,7 +78,7 @@
 					<tr class="product_info_tr"><td>Tarifas</td>
 					
 					
-					<t t-foreach="product.x_tarifa" t-as="o">
+					<t t-foreach="product.item_ids" t-as="o">
                                
                                 <td>
                                 <ul>
