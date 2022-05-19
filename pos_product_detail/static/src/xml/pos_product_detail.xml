@@ -74,8 +74,8 @@
                         <tr class="product_info_tr"><td>Volume</td><td><t t-esc="product.volume or '---'"/></td></tr>
                     </t>
 					<tr class="product_info_tr"><td>Tarifas</td>
-					
-					<t t-foreach="product.item_ids" t-as="o">
+					<td><t t-esc="product.item_ids or '---'"/></td
+					<!--<t t-foreach="product.item_ids" t-as="o">
                                
                                 
                                 <ul>
@@ -90,7 +90,7 @@
 					
 					
 					
-					</tr>
+					</tr>-->
                     <t t-if="field_load_check.to_weight">
                         <tr class="product_info_tr">
                             <td>To Weigh With Scale</td>
