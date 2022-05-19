@@ -12,6 +12,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
     var SuperProductScreen = screens.ProductScreenWidget.prototype;
 
     pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','item_ids']);
+	pos_model.load_fields("product.pricelist", ['name', 'display_name']);
 
     pos_model.load_models({
         model:  'product.fields',
@@ -24,7 +25,28 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
                 self.db.field_load_check[field.field_name] = self.config.product_details_data.includes(field.id);
             });
         },
-    });
+    },
+	{
+                model: 'product.pricelist.item',
+                domain: function(self) {
+                    return [['pricelist_id', 'in',
+                             _.pluck(self.pricelists, 'id')]];
+                },
+                loaded: function(self, pricelist_items){
+                    var pricelist_by_id = {};
+                    _.each(self.pricelists, function (pricelist) {
+                        pricelist_by_id[pricelist.id] = pricelist;
+                    });
+
+                    _.each(pricelist_items, function (item) {
+                        var pricelist = pricelist_by_id[item.pricelist_id[0]];
+                        pricelist.items.push(item);
+                        item.base_pricelist = pricelist_by_id[
+                            item.base_pricelist_id[0]
+                        ];
+                    });
+                },
+            });
 
     screens.ProductScreenWidget.include({
         events : _.extend({}, SuperProductScreen.events, {
