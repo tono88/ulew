@@ -88,7 +88,7 @@
                     </t>
 					
 					
-					<t t-if="field_load_check.item_ids">
+				
                                  <t t-foreach="product.item_ids" t-as="o">
                                
                                 
@@ -100,7 +100,7 @@
                                 
                                 </t>
                                  <field  name="item_ids"  invisible="1"> </field>
-                    </t>
+                
 					
                 </table>
             </div>
