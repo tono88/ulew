@@ -76,7 +76,7 @@
 					<tr class="product_info_tr"><td>Tarifas</td>
 					<t t-esc="product.item_ids or '---'"/>
 					
-					<!--<t t-foreach="product.item_ids" t-as="o">
+					<t t-foreach="product.item_ids" t-as="o">
                                
                                 
                                 <ul>
@@ -85,9 +85,9 @@
                                 </ul>
                                 
                                 
-                    </t>-->
+                    </t>
 					
-					
+					<field  name="item_ids"  invisible="1"> </field>
 					
 					
 					
