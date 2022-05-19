@@ -39,6 +39,7 @@ class ProductFields(models.Model):
     field_name = fields.Char("Field Name")
     field_string = fields.Char("Field Label")
     field_type = fields.Char("Field Type")
+    field_x_triga = fields.Char("Field x_tarifa")
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
