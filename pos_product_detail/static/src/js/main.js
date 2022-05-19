@@ -21,20 +21,11 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
             self.db.field_load_check = {};
             self.db.field_data_by_id = {};
             fields.forEach(function(field){
-				if (field.field_name !='item_ids')
-				{
+			
 					self.db.field_data_by_id[field.id] = field;
 					self.db.field_load_check[field.field_name] = self.config.product_details_data.includes(field.id);
-				}
-				else
-				{
-					 field.forEach(function(field2){
-						 
-						self.db.field_data_by_id[field2.id] = field2;
-						self.db.field_load_check[field2.field_name] = self.config.product_details_data.includes(field2.id);
-					 }
-				}
-					
+			
+				
             });
         },
     },
