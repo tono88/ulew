@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<odoo>
+    <data noupdate="1">
+        <record id="product_details_field_1" model="product.fields">
+            <field name="field_name">barcode</field>
+            <field name="field_string">Barcode</field>
+            <field name="field_type">char</field>
+        </record>
+        <record id="product_details_field_2" model="product.fields">
+            <field name="field_name">lst_price</field>
+            <field name="field_string">Sale Price</field>
+            <field name="field_type">float</field>
+        </record>
+        <record id="product_details_field_3" model="product.fields">
+            <field name="field_name">standard_price</field>
+            <field name="field_string">Cost Price</field>
+            <field name="field_type">float</field>
+        </record>
+        <record id="product_details_field_4" model="product.fields">
+            <field name="field_name">volume</field>
+            <field name="field_string">Volume</field>
+            <field name="field_type">float</field>
+        </record>
+        <record id="product_details_field_5" model="product.fields">
+            <field name="field_name">weight</field>
+            <field name="field_string">Weight</field>
+            <field name="field_type">float</field>
+        </record>
+        <record id="product_details_field_6" model="product.fields">
+            <field name="field_name">categ_id</field>
+            <field name="field_string">Internal Category</field>
+            <field name="field_type">many2one</field>
+        </record>
+        <record id="product_details_field_7" model="product.fields">
+            <field name="field_name">to_weight</field>
+            <field name="field_string">To Weigh With Scale</field>
+            <field name="field_type">boolean</field>
+        </record>
+        <record id="product_details_field_8" model="product.fields">
+            <field name="field_name">uom_id</field>
+            <field name="field_string">Unit of Measure</field>
+            <field name="field_type">many2one</field>
+        </record>
+    </data>
+</odoo>

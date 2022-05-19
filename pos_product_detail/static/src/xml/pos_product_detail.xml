@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<templates id="template" xml:space="preserve">
+    <t t-extend="ProductScreenWidget">
+        <t t-jquery='div.control-buttons' t-operation='before'>
+            <div>
+                <i class="pad_tg fa fa-bars fa-2x" title='click to toggle' aria-hidden="true" style="cursor:pointer;transform: scale(2,1);"></i>
+            </div>
+        </t>
+    </t>
+    <t t-name="ProductDetails">
+        <div id='info_tooltip' class='product_info_div'>
+            <img class='cross_img_top close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
+            <div class="inner_div" style="position:relative;">
+                <p class='product_info_p'><t t-esc="product.display_name"/></p>
+                <table class="product_info_table">
+                    <t t-if="field_load_check.barcode">
+                        <tr class="product_info_tr"><td>Barcode</td><td><t t-esc="product.barcode or '---'"/></td></tr>
+                    </t>
+                    <t t-if="field_load_check.type">
+                        <tr class="product_info_tr"><td>Type</td>
+                            <td>
+                                <t t-if="product.type =='consu'">
+                                    Consumable Product
+                                </t>
+                                <t t-if="product.type =='service'">
+                                    Service
+                                </t>
+                                <t t-if="product.type =='product'">
+                                    Stockable Product
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="field_load_check.categ_id">
+                        <tr class="product_info_tr"><td>Internal category</td><td><t t-esc="product.categ_id[1] or '---'"/></td></tr>
+                    </t>
+                    <t t-if="field_load_check.standard_price">
+                        <tr class="product_info_tr">
+                            <td>Cost Price</td>
+                            <td>
+                                <t t-if="product.standard_price">
+                                    <t t-esc="widget.format_currency(product.standard_price)"/>
+                                </t>
+                                <t t-if="! product.standard_price">
+                                    ---
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="field_load_check.lst_price">
+                        <tr class="product_info_tr">
+                            <td>Sale Price</td>
+                            <td>
+                                <t t-if="product.lst_price">
+                                    <t t-esc="widget.format_currency(product.lst_price)"/>
+                                </t>
+                                <t t-if="! product.lst_price">
+                                    ---
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="field_load_check.uom_id">
+                        <tr class="product_info_tr"><td>Unit Of Measure</td><td><t t-esc="product.uom_id[1] or '---'"/></td></tr>
+                    </t>
+                    <t t-if="field_load_check.weight">
+                        <tr class="product_info_tr"><td>Weight</td><td><t t-esc="product.weight or '---'"/></td></tr>
+                    </t>
+                    <t t-if="field_load_check.volume">
+                        <tr class="product_info_tr"><td>Volume</td><td><t t-esc="product.volume or '---'"/></td></tr>
+                    </t>
+                    <t t-if="field_load_check.to_weight">
+                        <tr class="product_info_tr">
+                            <td>To Weigh With Scale</td>
+                            <td>
+                                <t t-if="product.to_weight">
+                                    Yes
+                                </t>
+                                <t t-if="!product.to_weight">
+                                    No
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+            <img class='cross_img_bottom close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
+        </div>
+    </t>
+</templates>
