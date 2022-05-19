@@ -14,7 +14,7 @@ _logger = logging.getLogger(__name__)
 
 class PosConfig(models.Model):
     _inherit = 'pos.config'
-    product_details_data = fields.Many2many("product.fields", "pods_config_product_settings_relation", "pos_config_id", "product_setings_id", string="POS Product Detail", compute='_get_config_settings')
+    product_details_data = fields.Many2many("product.fields", "product.pricelist.item", "pods_config_product_settings_relation", "pos_config_id", "product_setings_id", string="POS Product Detail", compute='_get_config_settings')
 
     @api.multi
     def _get_config_settings(self):
