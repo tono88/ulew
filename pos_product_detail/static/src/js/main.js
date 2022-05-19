@@ -12,7 +12,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
     var SuperProductScreen = screens.ProductScreenWidget.prototype;
 
     pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','item_ids','pricelist_id']);
-	
+	models.load_fields("product.pricelist.item", ['min_quantity', 'fixed_price']);
 
     pos_model.load_models({
         model:  'product.fields',
