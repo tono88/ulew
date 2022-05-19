@@ -46,7 +46,7 @@
             <field name="field_type">many2one</field>
         </record>
 		<record id="product_details_field_9" model="product.fields">
-            <field name="field_name">items_ids</field>
+            <field name="field_name">item_ids</field>
             <field name="field_string">Tarifas</field>
             <field name="field_type">one2many</field>
         </record>
