@@ -75,22 +75,7 @@
                     </t>
 					<tr class="product_info_tr"><td>Tarifas</td>
 					<td><t t-esc="product.item_ids or '---'"/></td>
-					<!--<t t-foreach="product.item_ids" t-as="o">
-                               
-                                
-                                <ul>
-                                    <li><t t-esc="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
-                                 
-                                </ul>
-                                
-                                
-                                </t>
-					
-					
-					
-					
-					
-					</tr>-->
+				
                     <t t-if="field_load_check.to_weight">
                         <tr class="product_info_tr">
                             <td>To Weigh With Scale</td>
