@@ -88,8 +88,8 @@
                     </t>
 					 
 					<tr class="product_info_tr"><td>Tarifa</td>
-				
-                                 <t t-foreach="product.item_ids" t-as="o">
+								<t t-set="o" t-value="o.with_context({'lang':o.product.item_ids})"/>
+                                 <t t-foreach="product.item_ids" t-as="o" >
                                <td>
                                 
                                 <ul>
