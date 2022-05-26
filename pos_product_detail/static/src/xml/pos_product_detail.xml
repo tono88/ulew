@@ -94,7 +94,7 @@
                                <td>
                                 
                                 <ul>
-                                    <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="product.get_price(tarifa, 1)"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
+                                    <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="product.get_price(tarifa, 10)"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
                                 </ul>
                                   </td>
