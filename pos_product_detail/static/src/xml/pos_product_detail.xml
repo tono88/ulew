@@ -90,11 +90,11 @@
 					 
 					<tr class="product_info_tr"><td>Tarifa</td>
 								
-                                 <t t-foreach="product.item_ids" t-as="o" context="{default_product_id': active_id}">
+                                 <t t-foreach="product.item_ids" t-as="tarifa" context="{default_product_id': active_id}">
                                <td>
                                 
                                 <ul>
-                                    <li><t t-esc="o.min_quantity"/>:    Q. <t t-esc="o.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
+                                    <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="tarifa.fixed_price"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
                                 </ul>
                                   </td>
