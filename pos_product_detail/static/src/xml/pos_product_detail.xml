@@ -11,7 +11,7 @@
             </div>
         </t>
     </t>
-	<t t-set="o" t-value="o.with_context({'product.item_ids':o.product.pricelist.item})"/>
+
     <t t-name="ProductDetails">
         <div id='info_tooltip' class='product_info_div'>
             <img class='cross_img_top close_button' src='/pos_product_detail/static/src/img/icon-cross.png'/>
@@ -90,7 +90,7 @@
 					 
 					<tr class="product_info_tr"><td>Tarifa</td>
 								
-                                 <t t-foreach="product.item_ids" t-as="o" >
+                                 <t t-foreach="product.item_ids" t-as="o" context="{'default_min_quantity': min_quantity}">
                                <td>
                                 
                                 <ul>
