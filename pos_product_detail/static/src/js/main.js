@@ -35,20 +35,17 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
                     return [['pricelist_id', 'in',
                              _.pluck(self.pricelists, 'id')]];
                 },
-                loaded: function(self, pricelist_items){
-                    var pricelist_by_id = {};
-                    _.each(self.pricelists, function (pricelist) {
-                        pricelist_by_id[pricelist.id] = pricelist;
-                    });
-
-                    _.each(pricelist_items, function (item) {
-                        var pricelist = pricelist_by_id[item.pricelist_id[0]];
-                        pricelist.items.push(item);
-                        item.base_pricelist = pricelist_by_id[
-                            item.base_pricelist_id[0]
-                        ];
-                    });
-                },
+                loaded: function(self, fields){
+					self.db.field_load_check = {};
+					self.db.field_data_by_id = {};
+					fields.forEach(function(field){
+					
+							self.db.field_data_by_id[field.id] = field;
+							self.db.field_load_check[field.field_name] = self.config.product_details_data.includes(field.id);
+					
+						
+					});
+				},
             });
 
     screens.ProductScreenWidget.include({
