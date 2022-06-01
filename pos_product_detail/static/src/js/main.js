@@ -57,7 +57,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
             self.$('.pad_tg').parent().siblings('div').slideToggle();
         }
     });
-console.log("models",models);
+
     screens.OrderWidget.include({
         init: function(parent, options) {
             var self = this;
