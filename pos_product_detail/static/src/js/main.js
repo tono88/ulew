@@ -1,96 +1,7 @@
 /* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) */
 /* See LICENSE file for full copyright and licensing details. */
 /* License URL : <https://store.webkul.com/license.html/> */
-var exports = {};
-exports.Product = Backbone.Model.extend({
-    initialize: function(attr, options){
-        _.extend(this, options);
-    },
 
-    // Port of get_product_price on product.pricelist.
-    //
-    // Anything related to UOM can be ignored, the POS will always use
-    // the default UOM set on the product and the user cannot change
-    // it.
-    //
-    // Pricelist items do not have to be sorted. All
-    // product.pricelist.item records are loaded with a search_read
-    // and were automatically sorted based on their _order by the
-    // ORM. After that they are added in this order to the pricelists.
-    get_price2: function(pricelist, quantity){
-        var self = this;
-        var date = moment().startOf('day');
-
-        // In case of nested pricelists, it is necessary that all pricelists are made available in
-        // the POS. Display a basic alert to the user in this case.
-        if (pricelist === undefined) {
-            alert(_t(
-                'An error occurred when loading product prices. ' +
-                'Make sure all pricelists are available in the POS.'
-            ));
-        }
-
-        var category_ids = [];
-        var category = this.categ;
-        while (category) {
-            category_ids.push(category.id);
-            category = category.parent;
-        }
-
-        var pricelist_items = _.filter(pricelist.items, function (item) {
-            return (! item.product_tmpl_id || item.product_tmpl_id[0] === self.product_tmpl_id) &&
-                   (! item.product_id || item.product_id[0] === self.id) &&
-                   (! item.categ_id || _.contains(category_ids, item.categ_id[0])) &&
-                   (! item.date_start || moment(item.date_start).isSameOrBefore(date)) &&
-                   (! item.date_end || moment(item.date_end).isSameOrAfter(date));
-        });
-
-        var price = self.lst_price;
-        _.find(pricelist_items, function (rule) {
-            if (rule.min_quantity && quantity < rule.min_quantity) {
-                return false;
-            }
-
-            if (rule.base === 'pricelist') {
-                price = self.get_price(rule.base_pricelist, quantity);
-            } else if (rule.base === 'standard_price') {
-                price = self.standard_price;
-            }
-
-            if (rule.compute_price === 'fixed') {
-                price = rule.fixed_price;
-                return true;
-            } else if (rule.compute_price === 'percentage') {
-                price = price - (price * (rule.percent_price / 100));
-                return true;
-            } else {
-                var price_limit = price;
-                price = price - (price * (rule.price_discount / 100));
-                if (rule.price_round) {
-                    price = round_pr(price, rule.price_round);
-                }
-                if (rule.price_surcharge) {
-                    price += rule.price_surcharge;
-                }
-                if (rule.price_min_margin) {
-                    price = Math.max(price, price_limit + rule.price_min_margin);
-                }
-                if (rule.price_max_margin) {
-                    price = Math.min(price, price_limit + rule.price_max_margin);
-                }
-                return true;
-            }
-
-            return false;
-        });
-
-        // This return value has to be rounded with round_di before
-        // being used further. Note that this cannot happen here,
-        // because it would cause inconsistencies with the backend for
-        // pricelist that have base == 'pricelist'.
-        return price;
-    },
-});
 
 
 odoo.define('pos_product_detail.pos_product_detail', function(require){
@@ -104,6 +15,8 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
 
     pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','item_ids']);
 	pos_model.load_fields("product.pricelist.item", ['min_quantity', 'fixed_price']);
+	
+	
 
     pos_model.load_models({
         model:  'product.fields',
@@ -138,7 +51,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
 					});
 				},
             });
-
+	console.log("models",models);
     screens.ProductScreenWidget.include({
         events : _.extend({}, SuperProductScreen.events, {
             'click .pad_tg': 'toggle_pads',
