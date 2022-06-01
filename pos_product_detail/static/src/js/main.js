@@ -2,8 +2,6 @@
 /* See LICENSE file for full copyright and licensing details. */
 /* License URL : <https://store.webkul.com/license.html/> */
 
-
-
 odoo.define('pos_product_detail.pos_product_detail', function(require){
 "use strict";
     var screens = require('point_of_sale.screens');
@@ -15,8 +13,6 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
 
     pos_model.load_fields('product.product',['lst_price','standard_price','volume','weight','categ_id','item_ids']);
 	pos_model.load_fields("product.pricelist.item", ['min_quantity', 'fixed_price']);
-	
-	
 
     pos_model.load_models({
         model:  'product.fields',
@@ -51,7 +47,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
 					});
 				},
             });
-	console.log("models",models);
+
     screens.ProductScreenWidget.include({
         events : _.extend({}, SuperProductScreen.events, {
             'click .pad_tg': 'toggle_pads',
@@ -61,7 +57,7 @@ odoo.define('pos_product_detail.pos_product_detail', function(require){
             self.$('.pad_tg').parent().siblings('div').slideToggle();
         }
     });
-
+console.log("models",models);
     screens.OrderWidget.include({
         init: function(parent, options) {
             var self = this;
