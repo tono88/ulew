@@ -93,6 +93,11 @@
                                  <t t-foreach="product.item_ids" t-as="tarifa" context="{default_product_id': active_id}">
                                <td>
                                 
+								
+								<record model="tarifa" id="o">
+                              <strong>Dirección:      </strong><field name="street">o.min_quantity</field>
+                             
+								</record>
                                 <ul>
                                     <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="product.get_price(1, 40)"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
