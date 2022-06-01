@@ -99,7 +99,7 @@
                              
 								</record>
                                 <ul>
-                                    <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="product.get_price(1, 40)"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
+                                    <li><t t-esc="tarifa.min_quantity"/>:    Q. <t t-esc="product.get_price2(1, 40)"  options="{'currency_field': 'currency_id', 'field_digits': True}"/>   </li>
                                  
                                 </ul>
                                   </td>
